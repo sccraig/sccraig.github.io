@@ -1,2 +1,0 @@
-# sccraig.net
-Personal website
