@@ -47,24 +47,11 @@
 </head>
 
 <body onload="typeWriter();">
-    <div>
-
-
-    </div>
+    <div w3-include-html="./nav.html"></div>
 
     <div>
-        <ul id="navbar">
-            <li class="navitem"><a href="./index.html">Home</a></li>
-            <li class="navitem"><a href="./about.html">About/CV/Resume/Portfolio</a></li>
-            <li class="navitem"><a href="./blog.html">Biographical Log</a></li>
-            <li class="navitem"><a href="./biostats.html">Biological Stats</a></li>
-            <li class="navitem"><a href="./aviation.html">Aviation</a></li>
-            <li class="navitem"><a href="./github.html">Github</a></li>
-            <li class="navitem"><a href="./portfolio.html">Creative Endeavors</a></li>
-            <li class="navitem"><a href="./random.html">Random</a></li>
-            
-          </ul>
-    <p id="blog">Blog</p>
+
+        <p id="blog">Blog</p>
     </div>
 
 
@@ -86,9 +73,9 @@
 
 <script>
     function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms));
-}
-    
+        return new Promise(resolve => setTimeout(resolve, ms));
+    }
+
     var i = 0;
     var j = 1;
     var txt = "iographical ";
@@ -122,15 +109,15 @@
         sleep(speed);
         document.getElementById("blog").innerHTML = "Biographical Log";
         sleep(speed);
-            
-        }
+
+    }
 
 
 
 
 </script>
 
-
+<script src="includeHTML.js"></script>
 
 
 </html>
