@@ -6,83 +6,68 @@
     <link rel="icon" type="image/x-icon" href="./images/favicon.ico">
     <link rel="stylesheet" href="./style.css">
     <script src="./includeHTML.js"></script>
+
 </head>
 
-<body onload="typeWriter();">
+<body>
     <div w3-include-html="./nav.html"></div>
 
     <div>
 
-        <p id="blog">Blog</p>
-        <p>Blog is a shortening of weblog, and not a portmanteau of biographical log, unfortunately.</p>
+        <h1 id="typewriter">Blog<span class="cursor"></span></h1>
+        <p style="text-align: center;">(Blog is actually a shortening of weblog, and not a portmanteau of biographical log, unfortunately.)</p>
     </div>
 
 
-    <div style="text-align:center; vertical-align: bottom;">
 
 
 
 
-        <p />Copyright &copy; 2022-2023 by Stephen Craig. All rights reserved.
-        <p />&nbsp;
 
 
 
-    </div>
+
+
+
+    <footer w3-include-html="./footer.html"></footer>
 </body>
 
-
-
-
 <script>
-    function sleep(ms) {
-        return new Promise(resolve => setTimeout(resolve, ms));
-    }
-
-    var i = 0;
-    var j = 1;
-    var txt = "iographical ";
-    var speed = 1000;
+    const steps = [
+        "Blog", "B log", "Bi log", "Bio log", "Biog log", "Biogr log", "Biogra log",
+        "Biograp log", "Biograph log", "Biographi log", "Biographic log",
+        "Biographica log", "Biographical log", "Biographical Log"
+    ];
+    let currentIndex = 0;
+    let isDeleting = false;
+    const typingSpeed = 150;
+    const delay = 3000;
+    const h1Element = document.getElementById("typewriter");
 
     function typeWriter() {
+        h1Element.innerHTML = steps[currentIndex] + '<span class="cursor"></span>';
 
-        document.getElementById("blog").innerHTML = "B log";
-        sleep(speed);
-        document.getElementById("blog").innerHTML = "Bi log";
-        sleep(speed);
-        document.getElementById("blog").innerHTML = "Bio log";
-        sleep(speed);
-        document.getElementById("blog").innerHTML = "Biog log";
-        sleep(speed);
-        document.getElementById("blog").innerHTML = "Biogr log";
-        sleep(speed);
-        document.getElementById("blog").innerHTML = "Biogra log";
-        sleep(speed);
-        document.getElementById("blog").innerHTML = "Biograp log";
-        sleep(speed);
-        document.getElementById("blog").innerHTML = "Biograph log";
-        sleep(speed);
-        document.getElementById("blog").innerHTML = "Biographi log";
-        sleep(speed);
-        document.getElementById("blog").innerHTML = "Biographic log";
-        sleep(speed);
-        document.getElementById("blog").innerHTML = "Biographica log";
-        sleep(speed);
-        document.getElementById("blog").innerHTML = "Biographical log";
-        sleep(speed);
-        document.getElementById("blog").innerHTML = "Biographical Log";
-        sleep(speed);
-
+        if (!isDeleting && currentIndex < steps.length - 1) {
+            currentIndex++;
+            setTimeout(typeWriter, typingSpeed);
+        } else if (!isDeleting && currentIndex === steps.length - 1) {
+            isDeleting = true;
+            setTimeout(typeWriter, delay);
+        } else if (isDeleting && currentIndex > 0) {
+            currentIndex--;
+            setTimeout(typeWriter, typingSpeed);
+        } else if (isDeleting && currentIndex === 0) {
+            isDeleting = false;
+            setTimeout(typeWriter, delay);
+        }
     }
 
-
-
-
+    // Initial call to start the typewriter effect
+    setTimeout(typeWriter, 5000);
 </script>
 
 <script>
     includeHTML();
 </script>
-
 
 </html>
