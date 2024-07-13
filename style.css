@@ -9,7 +9,8 @@ body {
 }
 
 body, html {
-    height: 100%;
+    width: calc(100vw-16px);
+    height: calc(100vh-16px);
 
 }
 
